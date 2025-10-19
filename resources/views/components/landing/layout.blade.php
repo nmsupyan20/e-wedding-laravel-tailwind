@@ -10,7 +10,7 @@
 
 </head>
 
-<body class="bg-gray-200">
+<body class="bg-gray-200 box-border">
     <nav class="bg-black shadow-md text-white fixed w-full z-20 top-0 left-0 right-0">
 
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -37,6 +37,7 @@
                         ['name' => 'About', 'url' => '/about'],
                         ['name' => 'Catalog', 'url' => '/catalog'],
                         ['name' => 'Contact', 'url' => '/contact'],
+                        ['name' => 'Dashboard', 'url' => '/dashboard'],
                     ];
                 @endphp
 
@@ -60,9 +61,15 @@
         </div>
     </nav>
 
-    {{ $slot }}
+    <div>
+        {{ $slot }}
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
 
 </html>

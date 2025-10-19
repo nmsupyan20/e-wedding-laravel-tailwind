@@ -2,7 +2,7 @@
 
     <div
         class="w-full md:w-3/5 p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-        <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-900 text-center">Login</h5>
+        <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-900 text-center">Sign Up</h5>
         <hr class="text-gray-300 mb-2">
 
 
