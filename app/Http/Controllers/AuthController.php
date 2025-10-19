@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -25,9 +28,18 @@ class AuthController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function register(RegisterRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
+
+        unset($data['password_confirmation']);
+
+        if(User::create($data)) {
+            return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+        } else {
+            return redirect()->route('login')->with('failed', 'Registrasi gagal! Silakan coba lagi.');
+        }
     }
 
     /**

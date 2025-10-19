@@ -1,10 +1,23 @@
 <x-auth.layout>
 
+    @session('success')
+        <div class="mb-4 p-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            role="alert">
+            {{ session('success') }}
+        </div>
+    @endsession
+
+    @session('failed')
+        <div class="mb-4 p-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+            role="alert">
+            {{ session('failed') }}
+        </div>
+    @endsession
+
     <div
         class="w-full md:w-[25rem] p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-900 text-center">Login</h5>
         <hr class="text-gray-300 mb-2">
-
 
         <form class="max-w-sm mx-auto">
             <div class="mb-5">
