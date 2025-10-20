@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -35,7 +37,7 @@ class AuthController extends Controller
 
         unset($data['password_confirmation']);
 
-        if(User::create($data)) {
+        if (User::create($data)) {
             return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
         } else {
             return redirect()->route('login')->with('failed', 'Registrasi gagal! Silakan coba lagi.');
@@ -45,9 +47,27 @@ class AuthController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function authenticate(LoginRequest $request)
     {
-        //
+        $credentials = $request->validated();
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+ 
+            return redirect()->intended('dashboard');
+        } else {
+            return redirect()->route('login')->with('failed', 'Login gagal! Silakan coba lagi.');
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
     }
 
     /**

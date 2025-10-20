@@ -38,7 +38,6 @@
                     ['name' => 'Purchasing', 'link' => 'dashboard/purchasing', 'icon' => 'shopping-cart'],
                     ['name' => 'Users', 'link' => '/dashboard/users', 'icon' => 'users'],
                     ['name' => 'Landing Page', 'link' => '/', 'icon' => 'home'],
-                    ['name' => 'Logout', 'link' => '/logout', 'icon' => 'log-out'],
                 ];
             @endphp
 
@@ -54,6 +53,16 @@
                         </a>
                     </li>
                 @endforeach
+
+                <li>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit"
+                            class="flex items-center p-2 text-white rounded-lg hover:bg-rose-500 group w-full">
+                            <i data-feather="log-out"></i>
+                            <span class="ms-3">Logout</span>
+                    </form>
+                </li>
 
             </ul>
         </div>
