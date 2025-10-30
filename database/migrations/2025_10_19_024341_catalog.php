@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('header');
+            $table->text('excerpt');
             $table->text('description');
             $table->decimal('price', 11, 2);
             $table->enum('status', ['publish', 'draft'])->default('draft');

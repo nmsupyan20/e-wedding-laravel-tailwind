@@ -15,15 +15,29 @@
             @enderror
         </div>
         <div class="mb-4">
+            <label for="excerpt" class="block mb-2 text-sm font-medium text-gray-900">Excerpt</label>
+            <textarea id="excerpt" name="excerpt" rows="2"
+                class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 @error('excerpt') border-red-500 @enderror"
+                placeholder="Short description for catalog preview"
+                required>{{ old('excerpt', $catalog->excerpt) }}</textarea>
+            @error('excerpt')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="mb-4">
             <label for="header" class="block mb-2 text-sm font-medium text-gray-900">Header Image</label>
-            <div class="flex items-center gap-4">
-                <input type="file" id="header" name="header"
-                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none @error('header') border-red-500 @enderror"
-                    accept="image/*" />
-                @if($catalog->header)
+
+            @if($catalog->header)
+                <div class="mb-3">
                     <img src="{{ asset('storage/' . $catalog->header) }}" alt="Header Preview"
-                        class="w-16 h-16 object-cover rounded border" />
-                @endif
+                        class="w-48 h-28 object-cover rounded border" />
+                </div>
+            @endif
+
+            <div>
+                <input type="file" id="header" name="header"
+                    class="block w-full text-sm text-gray-900 rounded-lg cursor-pointer bg-gray-50 focus:outline-none @error('header') border-red-500 @enderror"
+                    accept="image/*" />
             </div>
             @error('header')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>

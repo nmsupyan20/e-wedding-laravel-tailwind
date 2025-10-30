@@ -35,7 +35,7 @@
                 $navLinks = [
                     ['name' => 'Reports', 'link' => '/dashboard', 'icon' => 'bar-chart-2'],
                     ['name' => 'Catalogs', 'link' => '/dashboard/catalogs', 'icon' => 'book-open'],
-                    ['name' => 'Purchasing', 'link' => 'dashboard/purchasing', 'icon' => 'shopping-cart'],
+                    ['name' => 'Purchasing', 'link' => '/dashboard/purchasing', 'icon' => 'shopping-cart'],
                     ['name' => 'Users', 'link' => '/dashboard/users', 'icon' => 'users'],
                     ['name' => 'Landing Page', 'link' => '/', 'icon' => 'home'],
                 ];

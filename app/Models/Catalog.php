@@ -9,6 +9,7 @@ class Catalog extends Model
     protected $fillable = [
         'title',
         'header',
+        'excerpt',
         'description',
         'price',
         'status',
